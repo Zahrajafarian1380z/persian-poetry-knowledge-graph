@@ -2,8 +2,7 @@
 # 🚀 پایپ‌لاین تحلیل سبک‌شناختی (امکان تعیین تعداد کلمات کلیدی + بسیار سریع)
 # ==============================================================================
 
-import os
-os.system("pip install -q gradio arabic-reshaper python-bidi transformers torch networkx scikit-learn pandas matplotlib")
+
 
 import re
 import torch
