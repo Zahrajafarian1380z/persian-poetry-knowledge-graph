@@ -2,7 +2,7 @@
 
 A demo system for extracting key concepts from Persian poetry and analyzing their semantic and structural relationships using a multilayer network approach.
 
-## 📌 Overview
+##  Overview
 
 This project presents a computational approach to the analysis of Persian poetry by combining statistical keyword extraction, semantic representations, and network analysis.
 
@@ -15,7 +15,7 @@ The system also provides an optional literary-style analysis based on predefined
 - Indian Style (سبک هندی)
 - Contemporary Poetry (شعر معاصر)
 
-## 🔬 Methodology
+##  Methodology
 
 The extraction pipeline combines three main components:
 
@@ -47,7 +47,7 @@ The final importance score of each candidate keyword is calculated by combining:
 
 A style-based modifier is also applied according to the selected literary style.
 
-## 🧠 Technologies
+##  Technologies
 
 - Python
 - ParsBERT
@@ -61,7 +61,7 @@ A style-based modifier is also applied according to the selected literary style.
 - Matplotlib
 - Gradio
 
-## 📊 Output
+##  Output
 
 The system provides two main outputs:
 
@@ -70,7 +70,7 @@ The system provides two main outputs:
 
 Users can also determine the number of keywords displayed in the final result.
 
-## 🚀 Running the Demo
+##  Running the Demo
 
 Install the required dependencies:
 
