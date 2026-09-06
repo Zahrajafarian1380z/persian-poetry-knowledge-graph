@@ -199,9 +199,9 @@ def analyze_style_pipeline(raw_text, file_obj, selected_style, top_k_words):
     # 📌 استفاده از عدد انتخاب‌شده توسط کاربر در اسلایدر (top_k_words)
     df_top = df.sort_values(by='composite_score', ascending=False).head(int(top_k_words)).copy()
 
-    # ۶. رسم گراف
+    # ۶. رسم گراف (بدون متن در دایره مرکزی)
     G_viz = nx.Graph()
-    main_node = get_display(reshape("MULTI-BERT"))
+    main_node = "CENTER_NODE"  # یک شناسه ساده برای گره مرکزی
     G_viz.add_node(main_node)
 
     for _, row in df_top.iterrows():
@@ -214,8 +214,8 @@ def analyze_style_pipeline(raw_text, file_obj, selected_style, top_k_words):
 
     pos = nx.spring_layout(G_viz, k=0.5, iterations=40, seed=42)
 
-    nx.draw_networkx_nodes(G_viz, pos, nodelist=[main_node], node_color='#1F2937', node_size=3200, ax=ax)
-    
+    # رسم دایره مرکزی با اندازه کوچک‌تر (1200 به جای 3200) و بدون نوشتن متن (ax.text حذف شده)
+    nx.draw_networkx_nodes(G_viz, pos, nodelist=[main_node], node_color='#1F2937', node_size=1200, ax=ax)
 
     other_nodes = [n for n in G_viz.nodes() if n != main_node]
     colors = ['#FFD700' if df_top[df_top['keyword'] == node]['status'].values[0] == "طلایی (سبکی)" else '#00C9A7'
