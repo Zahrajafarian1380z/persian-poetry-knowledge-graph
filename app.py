@@ -215,17 +215,7 @@ def analyze_style_pipeline(raw_text, file_obj, selected_style, top_k_words):
     pos = nx.spring_layout(G_viz, k=0.5, iterations=40, seed=42)
 
     nx.draw_networkx_nodes(G_viz, pos, nodelist=[main_node], node_color='#1F2937', node_size=3200, ax=ax)
-    ax.text(
-    pos[main_node][0],
-    pos[main_node][1],
-    main_node,
-    horizontalalignment='center',
-    verticalalignment='center',
-    color='white',
-    fontweight='bold',
-    fontsize=8,
-    linespacing=1.2
-)
+    
 
     other_nodes = [n for n in G_viz.nodes() if n != main_node]
     colors = ['#FFD700' if df_top[df_top['keyword'] == node]['status'].values[0] == "طلایی (سبکی)" else '#00C9A7'
