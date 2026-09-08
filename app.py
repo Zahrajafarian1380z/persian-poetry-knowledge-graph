@@ -16,6 +16,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 import torch
 from transformers import AutoModel, AutoTokenizer
 
+# ⚡ بهینه‌سازی مصرف حافظه RAM برای جلوگیری از ارور OOM در Render
+torch.set_num_threads(1)
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+
 plt.rcParams['font.family'] = 'sans-serif'
 
 # ------------------------------------------------------------------------------
@@ -23,7 +28,8 @@ plt.rcParams['font.family'] = 'sans-serif'
 # ------------------------------------------------------------------------------
 MODEL_NAME = 'HooshvareLab/bert-fa-base-uncased'
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-bert_model = AutoModel.from_pretrained(MODEL_NAME)
+# بارگذاری قطعه‌قطعه وزن‌ها جهت عدم جهش ناگهانی RAM
+bert_model = AutoModel.from_pretrained(MODEL_NAME, low_cpu_mem_usage=True)
 
 
 def get_word_embeddings_fast(words):
@@ -840,7 +846,7 @@ with gr.Blocks(title="سامانه تحلیل سبک‌شناختی اشعار �
       outputs=[plot_output, table_output],
   )
 
-# تنظیم پورت Render و اجرای برنامه
+# تنظیم پورت Render و اجرا
 port = int(os.environ.get("PORT", 7860))
 
 demo.launch(
