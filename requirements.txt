@@ -1,5 +1,6 @@
-torch
-transformers
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.2+cpu
+transformers==4.38.2
 gradio
 pandas
 numpy
