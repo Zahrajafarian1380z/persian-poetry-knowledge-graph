@@ -1,10 +1,10 @@
-gradio
-arabic-reshaper
-python-bidi
-transformers
 torch
-networkx
-scikit-learn
+transformers
+gradio
 pandas
-matplotlib
 numpy
+networkx
+matplotlib
+scikit-learn
+arabic_reshaper
+python-bidi
